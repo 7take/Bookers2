@@ -1,0 +1,31 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+<div class="profile-container">
+  <h3 class="profile-name"><%= @user.name %></h3>
+  <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb", style: "width: 100px; height: 100px; margin-top: 20px;") %>
+</div>
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav class="nav navbar-nav navbar-left">
+        <h1 class="col-lg-3">Bookers</h1>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to "Home",books_path, class: "glyphicon glyphicon-home" %>
+          </li>
+          <li>
+            <%= link_to "Users",books_path, class: "glyphicon glyphicon-user" %>
+          </li>
+          <li>
+            <%= link_to "Books",books_path, class: "glyphicon glyphicon-book" %>
+          </li>
+          <li>
+            <%= link_to "logout",books_path, class: "glyphicon glyphicon-log-out" %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
