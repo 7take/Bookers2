@@ -1,0 +1,22 @@
+ <div class="container">
+    <div class="row">
+      <div class="col-xs-5">
+		<% flash.each do |message_type, message| %>
+			<%= message %>
+		<% end %>
+		<h2><strong>welcome to<span class="glyphicon glyphicon-book"></span>Bookers !!</strong></h2>
+			<h3>In<span class="glyphicon glyphicon-book"></span><strong>Bookers</strong>,</h3>
+			<p>you can share and exchange your opinions , inpressions , and emotions about various books!</p>
+		<table>
+			<thead>
+				<tr>
+					<th><%= link_to 'Log in', new_user_session_path, class: "label label-info" %>
+					</th>
+					<th><%= link_to 'Sign Up', new_user_registration_path, class: "label label-success" %>
+					</th>
+				</tr>
+			</thead>
+		</table>
+	  </div>
+	</div>
+</div>

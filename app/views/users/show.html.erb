@@ -1,31 +1,38 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+        <%= render 'users/sidebar', book: @book , user: @user %>
+      </div>
+      <div class="col-xs-9">
+        <p id="You have updated user successfully">
+          <%= notice %>
+        </p>
+        <h2>Books</h2>
+        <table>
+          <thead>
+            <tr>
+              <th><div class="col-xs-6"></div></th>
+              <th><div class="col-xs-6">Title</div></th>
+              <th><div class="col-xs-6">Opinion</div></th>
+              <th colspan="3"></th>
+            </tr>
+            <% @books.each do |book| %>
 
-<div class="profile-container">
-  <h3 class="profile-name"><%= @user.name %></h3>
-  <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb", style: "width: 100px; height: 100px; margin-top: 20px;") %>
+            <tr>
+              <td><div class="col-xs-6"><%= attachment_image_tag book.user, :profile_image, fallback: "no image.png", size:"100x100" %></div></td>
+              <td><div class="col-xs-6"><%= link_to book.title, book_path(book.id) %></div></td>
+              <td><div class="col-xs-6"><%= book.body %></div></td>
+            </tr>
+          <% end %>
+          </thead>
+          <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-<header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container">
-      <nav class="nav navbar-nav navbar-left">
-        <h1 class="col-lg-3">Bookers</h1>
-      </nav>
-      <nav>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to "Home",books_path, class: "glyphicon glyphicon-home" %>
-          </li>
-          <li>
-            <%= link_to "Users",books_path, class: "glyphicon glyphicon-user" %>
-          </li>
-          <li>
-            <%= link_to "Books",books_path, class: "glyphicon glyphicon-book" %>
-          </li>
-          <li>
-            <%= link_to "logout",books_path, class: "glyphicon glyphicon-log-out" %>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+
+
+
+

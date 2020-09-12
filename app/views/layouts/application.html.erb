@@ -13,90 +13,53 @@
   <body>
   <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
+      <div class="row">
       <nav class="nav navbar-nav navbar-left">
-        <h1 class="col-lg-3">Bookers</h1>
+        <h1 class="col-xs-3">Bookers</h1>
       </nav>
       <nav>
         <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>
-            <%= link_to " Home",books_path, class: "glyphicon glyphicon-home" %>
+            <%= link_to " Home",user_path(current_user.id), class: "glyphicon glyphicon-home" %>
           </li>
           <li>
-            <%= link_to " Users",users_show_path, class: "glyphicon glyphicon-user" %>
+            <%= link_to " Users",users_path, class: "glyphicon glyphicon-user" %>
           </li>
           <li>
             <%= link_to " Books",books_path, class: "glyphicon glyphicon-book" %>
           </li>
           <li>
-            <%= link_to " logout",books_path, class: "glyphicon glyphicon-log-out" %>
+            <%= link_to " logout",destroy_user_session_path, method: :delete , class: "glyphicon glyphicon-log-out" %>
           </li>
         <% else %>
           <li>
-            <%= link_to " Home",books_path, class: "glyphicon glyphicon-home" %>
+            <%= link_to " Home",root_path, class: "glyphicon glyphicon-home" %>
           </li>
           <li>
-            <%= link_to " About",books_path, class: "glyphicon glyphicon-link" %>
+            <%= link_to " About",home_about_path, class: "glyphicon glyphicon-link" %>
           </li>
           <li>
-            <%= link_to " sign up",books_path, class: "glyphicon glyphicon-edit" %>
+            <%= link_to " sign up",new_user_registration_path, class: "glyphicon glyphicon-edit" %>
           </li>
           <li>
-            <%= link_to " login",books_path, class: "glyphicon glyphicon-log-in" %>
+            <%= link_to " login",new_user_session_path, class: "glyphicon glyphicon-log-in" %>
           </li>
         <% end %>
         </ul>
       </nav>
     </div>
+  </div>
   </header>
-  <div class="body">
-    <div class="container">
-      <p id="notice"></p>
-      <div class="row">
-        <div class="col-lg-3">
-          <h2>User info</h2>
-          <img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg" alt="No image">
-          <table class="table">
-            <tbody>
-              <tr></tr>
-              <tr>
-                <th>name</th>
-                <th></th>
-              </tr>
-              <tr>
-                <th>introduction</th>
-                <th></th>
-              </tr>
-            </tbody>
-          </table>
-          <div class="row">
-            <%= link_to "",books_path, class: "glyphicon glyphicon-wrench" %>
-          </div>
-          <h2>New book</h2>
-          <%= form_for(@book, url: books_path, method: :post) do |f| %>
-            <h4>Title</h4>
-              <input class="col-lg-12 book[title]" id="book_title">
-            <h4>Opinion</h4>
-              <textarea class="col-lg-12 book_body" name="book[body]" id="book_body"></textarea>
-              <h4><input type="submit" name="commit" value="Create Book" class="btn btn-primary col-lg-12" data-disable-with="Create Book"></h4>
-          <% end %>
 
-          <% @book.errors.any? %>
-            <% @book.errors.count %>
-            <% @book.errors.full_messages.each do |message| %>
-              <%= message %>
-            <% end %>
-          </div>
-        <!-- </form> -->
-        </div>
-      </div>
-    </div>
+
+
 <%= yield %>
 
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-lg-offset-9">
+        <div class="col-xs-3 col-xs-offset-9">
           <p>CopyRight Infratop.inc</p>
         </div>
       </div>

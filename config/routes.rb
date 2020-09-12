@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-	root to: 'home#index'
+	root 'home#index'
 
-	get 'top' => 'homes#top'
+  get 'home/about' => 'homes#index'
 
-	resources :books
+	resources :books, only: [:create, :index, :show, :destroy, :edit, :update ]
 
-	  devise_for :users
+	devise_for :users
 
-	  resources :post_images, only: [:new, :create, :index, :show]
-
+  resources :users, only: [:index, :show, :edit, :update]
 	  # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
@@ -18,7 +17,7 @@ end
   # get 'books/new'
   # # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # root :to => 'home#index'
+  # root :to => 'homes#index'
 
   # get 'top' => 'homes#top'
 
@@ -33,3 +32,5 @@ end
   # patch 'books/:id' => 'books#update', as: 'update_book'
 
   # delete 'books/:id' => 'books#destroy', as: 'destroy_book'
+
+# rails s -b 0.0.0.0
